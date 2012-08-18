@@ -33,6 +33,9 @@ class SubversionCommand(sublime_plugin.TextCommand):
         elif (command_type == 'update'):
             self.run_svn_simplecommand('up')
 
+        elif (command_type == 'side'):
+            print(self.filename)
+            
         '''
             TODO:
                 merge
@@ -44,14 +47,11 @@ class SubversionCommand(sublime_plugin.TextCommand):
                 diff
         '''
 
-        elif (command_type == 'side'):
-            print(self.filename)
-
     def commit(self):
-        self.view.window().show_input_panel('Input Comment', '', self.doComit, self.on_change, self.cancel)
+        self.view.window().show_input_panel('Input Comment', '', self.do_commit, self.on_change, self.cancel)
 
     # comment has be must input 
-    def doComit(self, comment):
+    def do_commit(self, comment):
         comment = comment.strip()
         if (comment == ''):
             sublime.error_message('Must input comment')
