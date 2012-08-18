@@ -35,7 +35,7 @@ class SubversionCommand(sublime_plugin.TextCommand):
 
         elif (command_type == 'side'):
             print(self.filename)
-            
+
         '''
             TODO:
                 merge
@@ -50,7 +50,7 @@ class SubversionCommand(sublime_plugin.TextCommand):
     def commit(self):
         self.view.window().show_input_panel('Input Comment', '', self.do_commit, self.on_change, self.cancel)
 
-    # comment has be must input 
+    # comment must be input 
     def do_commit(self, comment):
         comment = comment.strip()
         if (comment == ''):
