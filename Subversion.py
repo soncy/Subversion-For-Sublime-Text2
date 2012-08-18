@@ -10,7 +10,7 @@ import commands
 
 settings   = sublime.load_settings('Subversion.sublime-settings')
 svnpath    = settings.get('svnpath') or '/usr/bin'
-svncommand = svnpath + '/svn';
+SVNCOMMAND = svnpath + '/svn';
 
 class SubversionCommand(sublime_plugin.TextCommand):
     
@@ -32,7 +32,18 @@ class SubversionCommand(sublime_plugin.TextCommand):
 
         elif (command_type == 'update'):
             self.run_svn_simplecommand('up')
-            
+
+        '''
+            TODO:
+                merge
+                revert
+                status
+                log
+                remove
+                cleanup
+                diff
+        '''
+
         elif (command_type == 'side'):
             print(self.filename)
 
@@ -46,7 +57,7 @@ class SubversionCommand(sublime_plugin.TextCommand):
             sublime.error_message('Must input comment')
             self.commit()
             return;
-        command = svncommand + ' ci -m "' + comment + '" ' + self.filename;
+        command = SVNCOMMAND + ' ci -m "' + comment + '" ' + self.filename;
         self.run_command(command)
 
     def cancel(self):
@@ -55,8 +66,8 @@ class SubversionCommand(sublime_plugin.TextCommand):
     def on_change(self, text):
         pass
 
-    def run_svn_simplecommand(self, command):
-        command = ' '.join([svncommand, command, self.filename])
+    def run_svn_simplecommand(self, command_type):
+        command = ' '.join([SVNCOMMAND, command_type, self.filename])
         self.run_command(command)
 
     def run_command(self, command):
