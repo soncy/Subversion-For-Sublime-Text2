@@ -1,0 +1,12 @@
+[
+    { "caption": "-" },
+    {
+        "caption": "SVN",
+        "children": [
+            {"caption": "info", "command": "subversion", "args": {"command_type": "info", "paths": []}},
+            {"caption": "commit", "command": "subversion", "args": {"command_type": "commit", "paths": []}},
+            {"caption": "side", "command": "subversion", "args": {"command_type": "side", "paths": []}},
+            {"caption": "add", "command": "subversion", "args": {"command_type": "side", "paths": []}}
+        ]
+    }
+]

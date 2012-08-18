@@ -14,16 +14,27 @@ svncommand = svnpath + '/svn';
 
 class SubversionCommand(sublime_plugin.TextCommand):
     
-    def run(self, edit, command_type):
-        self.filename = self.view.file_name()
+    def run(self, edit, command_type, paths = []):
+        paths_len = len(paths)
+        if (paths_len > 0):
+            self.filename = ' '.join(paths)
+        else:    
+            self.filename = self.view.file_name()
+
         if (command_type == 'info'):
-            self.info()
+            self.run_svn_simplecommand('info')
+
         elif (command_type == 'commit'):
             self.commit()
 
-    def info(self):
-        command = svncommand + ' info ' + self.filename
-        self.run_command(command)
+        elif (command_type == 'add'):
+            self.run_svn_simplecommand('add')
+
+        elif (command_type == 'update'):
+            self.run_svn_simplecommand('up')
+            
+        elif (command_type == 'side'):
+            print(self.filename)
 
     def commit(self):
         self.view.window().show_input_panel('Input Comment', '', self.doComit, self.on_change, self.cancel)
@@ -43,6 +54,10 @@ class SubversionCommand(sublime_plugin.TextCommand):
 
     def on_change(self, text):
         pass
+
+    def run_svn_simplecommand(self, command):
+        command = ' '.join([svncommand, command, self.filename])
+        self.run_command(command)
 
     def run_command(self, command):
         self.view.window().run_command('show_panel', {"panel": "console", "reverse":True})

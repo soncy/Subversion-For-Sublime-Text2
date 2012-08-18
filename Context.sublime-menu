@@ -4,7 +4,9 @@
         "caption": "SVN",
         "children": [
             {"caption": "info", "command": "subversion", "args": {"command_type": "info"}},
-            {"caption": "commit", "command": "subversion", "args": {"command_type": "commit"}}
+            {"caption": "commit", "command": "subversion", "args": {"command_type": "commit"}},
+            {"caption": "side", "command": "subversion", "args": {"command_type": "side"}},
+            {"caption": "add", "command": "subversion", "args": {"command_type": "add"}}
         ]
     }
 ]
