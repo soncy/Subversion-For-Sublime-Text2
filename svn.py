@@ -1,7 +1,7 @@
 ''' 
     - Subversion For Sublime Text2
     - By soncy
-    - Need: Subversion 1.7 +
+    - Need Subversion 1.7+ support
     - LastUpdate: 2012-08-18 18:31
 '''
 
@@ -38,7 +38,7 @@ class SubversionCommand(sublime_plugin.TextCommand):
         command = svncommand + ' ci -m "' + comment + '" ' + self.filename;
         self.run_command(command)
 
-    def cancel(self, text):
+    def cancel(self):
         pass
 
     def on_change(self, text):
