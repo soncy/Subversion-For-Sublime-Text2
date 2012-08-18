@@ -1,0 +1,10 @@
+[
+    { "caption": "-" },
+    {
+        "caption": "SVN",
+        "children": [
+            {"caption": "info", "command": "subversion", "args": {"command_type": "info"}},
+            {"caption": "commit", "command": "subversion", "args": {"command_type": "commit"}}
+        ]
+    }
+]
