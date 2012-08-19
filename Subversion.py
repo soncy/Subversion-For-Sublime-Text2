@@ -15,8 +15,7 @@ SVNCOMMAND = svnpath + '/svn';
 class SubversionCommand(sublime_plugin.TextCommand):
     
     def run(self, edit, command_type, paths = []):
-        paths_len = len(paths)
-        if (paths_len > 0):
+        if (len(paths) > 0):
             self.filename = ' '.join(paths)
         else:    
             self.filename = self.view.file_name()
